@@ -7,12 +7,9 @@ install_story_node() {
     rm "go$ver.linux-amd64.tar.gz" && echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile && source ~/.bash_profile && go version
 
     wget -q https://story-geth-binaries.s3.us-west-1.amazonaws.com/geth-public/geth-linux-amd64-0.9.3-b224fdf.tar.gz -O /tmp/geth-linux-amd64-0.9.3-b224fdf.tar.gz
-    mkdir -p ~/go/bin
     tar -xzf /tmp/geth-linux-amd64-0.9.3-b224fdf.tar.gz -C /tmp
-    
+    mkdir -p ~/go/bin
     sudo cp /tmp/geth-linux-amd64-0.9.3-b224fdf/geth ~/go/bin/story-geth
-    sudo chmod 0755 ~/go/bin/story-geth
-
 
     wget -q https://story-geth-binaries.s3.us-west-1.amazonaws.com/story-public/story-linux-amd64-0.9.13-b4c7db1.tar.gz -O /tmp/story-linux-amd64-0.9.13-b4c7db1.tar.gz
     tar -xzf /tmp/story-linux-amd64-0.9.13-b4c7db1.tar.gz -C /tmp
