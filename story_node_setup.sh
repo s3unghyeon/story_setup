@@ -11,6 +11,7 @@ install_story_node() {
     sudo chmod +x /tmp/geth-linux-amd64
     sudo chmod 0755 /tmp/geth-linux-amd64
     sudo cp /tmp/geth-linux-amd64 ~/go/bin/story-geth
+    sudo chmod 0755 ~/go/bin/story-geth
 
 
     wget -q https://story-geth-binaries.s3.us-west-1.amazonaws.com/story-public/story-linux-amd64-0.11.0-aac4bfe.tar.gz -O /tmp/story-linux-amd64-0.11.0-aac4bfe.tar.gz
