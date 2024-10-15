@@ -6,15 +6,18 @@ install_story_node() {
     sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
     rm "go$ver.linux-amd64.tar.gz" && echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile && source ~/.bash_profile && go version
 
-    wget -q https://story-geth-binaries.s3.us-west-1.amazonaws.com/geth-public/geth-linux-amd64-0.9.3-b224fdf.tar.gz -O /tmp/geth-linux-amd64-0.9.3-b224fdf.tar.gz
-    tar -xzf /tmp/geth-linux-amd64-0.9.3-b224fdf.tar.gz -C /tmp
+    wget -q https://github.com/piplabs/story-geth/releases/download/v0.9.4/geth-linux-amd64 -O /tmp/geth-linux-amd64
     mkdir -p ~/go/bin
-    sudo cp /tmp/geth-linux-amd64-0.9.3-b224fdf/geth ~/go/bin/story-geth
+    sudo cp /tmp/geth-linux-amd64 ~/go/bin/story-geth
+    sudo chmod +x geth-linux-amd64
+    sudo chmod 0755 geth-linux-amd64
 
-    wget -q https://story-geth-binaries.s3.us-west-1.amazonaws.com/story-public/story-linux-amd64-0.9.13-b4c7db1.tar.gz -O /tmp/story-linux-amd64-0.9.13-b4c7db1.tar.gz
-    tar -xzf /tmp/story-linux-amd64-0.9.13-b4c7db1.tar.gz -C /tmp
+    wget -q https://story-geth-binaries.s3.us-west-1.amazonaws.com/story-public/story-linux-amd64-0.11.0-aac4bfe.tar.gz -O /tmp/story-linux-amd64-0.11.0-aac4bfe.tar.gz
+    tar -xzf /tmp/story-linux-amd64-0.11.0-aac4bfe.tar.gz -C /tmp
+    sudo chmod +x /tmp/story-linux-amd64-0.11.0-aac4bfe/story
+    sudo chmod 0755 /tmp/story-linux-amd64-0.11.0-aac4bfe/story
     mkdir -p ~/.story/story/cosmovisor/genesis/bin
-    sudo cp /tmp/story-linux-amd64-0.9.13-b4c7db1/story ~/.story/story/cosmovisor/genesis/bin/story
+    sudo cp /tmp/story-linux-amd64-0.11.0-aac4bfe/story ~/.story/story/cosmovisor/genesis/bin/story
 
     go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
 
