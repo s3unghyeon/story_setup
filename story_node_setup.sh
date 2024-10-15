@@ -1,83 +1,42 @@
-#!/bin/bash
+install_story_node() {
+    read -p "Enter your node moniker: " moniker
 
-# Exit on error
-set -e
 
-# Check if moniker is provided
-if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 <node_moniker>"
-    exit 1
-fi
+    cd ~ && ver="1.22.0" && wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
+    sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
+    rm "go$ver.linux-amd64.tar.gz" && echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile && source ~/.bash_profile && go version
 
-moniker=$1
+    wget -q https://story-geth-binaries.s3.us-west-1.amazonaws.com/geth-public/geth-linux-amd64-0.9.3-b224fdf.tar.gz -O /tmp/geth-linux-amd64-0.9.3-b224fdf.tar.gz
+    tar -xzf /tmp/geth-linux-amd64-0.9.3-b224fdf.tar.gz -C /tmp
+    mkdir -p ~/go/bin
+    sudo cp /tmp/geth-linux-amd64-0.9.3-b224fdf/geth ~/go/bin/story-geth
 
-# Set up variables
-GOVERSION="1.22.0"
-GETH_VERSION="0.9.3-b224fdf"
-STORY_VERSION="0.9.13-b4c7db1"
+    wget -q https://story-geth-binaries.s3.us-west-1.amazonaws.com/story-public/story-linux-amd64-0.9.13-b4c7db1.tar.gz -O /tmp/story-linux-amd64-0.9.13-b4c7db1.tar.gz
+    tar -xzf /tmp/story-linux-amd64-0.9.13-b4c7db1.tar.gz -C /tmp
+    mkdir -p ~/.story/story/cosmovisor/genesis/bin
+    sudo cp /tmp/story-linux-amd64-0.9.13-b4c7db1/story ~/.story/story/cosmovisor/genesis/bin/story
 
-# Install required packages
-echo "Installing required packages..."
-sudo apt update && sudo apt upgrade -y
-sudo apt install curl git jq build-essential gcc unzip wget lz4 -y
+    go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
 
-# Install Go
-echo "Installing Go..."
-cd ~
-wget "https://golang.org/dl/go$GOVERSION.linux-amd64.tar.gz"
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf "go$GOVERSION.linux-amd64.tar.gz"
-rm "go$GOVERSION.linux-amd64.tar.gz"
-echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile
-source ~/.bash_profile
-go version
+    mkdir -p ~/.story/story/cosmovisor
+    echo "export DAEMON_NAME=story" >> ~/.bash_profile
+    echo "export DAEMON_HOME=$HOME/.story/story" >> ~/.bash_profile
+    echo "export PATH=$HOME/go/bin:$DAEMON_HOME/cosmovisor/current/bin:$PATH" >> ~/.bash_profile
+    source ~/.bash_profile
 
-# Install Story-Geth
-echo "Installing Story-Geth..."
-wget -q https://story-geth-binaries.s3.us-west-1.amazonaws.com/geth-public/geth-linux-amd64-$GETH_VERSION.tar.gz -O /tmp/geth-linux-amd64-$GETH_VERSION.tar.gz
-tar -xzf /tmp/geth-linux-amd64-$GETH_VERSION.tar.gz -C /tmp
-mkdir -p ~/go/bin
-sudo cp /tmp/geth-linux-amd64-$GETH_VERSION/geth ~/go/bin/story-geth
+    ~/.story/story/cosmovisor/genesis/bin/story init --network iliad --moniker "$moniker"
 
-# Install Story binary
-echo "Installing Story binary..."
-wget -q https://story-geth-binaries.s3.us-west-1.amazonaws.com/story-public/story-linux-amd64-$STORY_VERSION.tar.gz -O /tmp/story-linux-amd64-$STORY_VERSION.tar.gz
-tar -xzf /tmp/story-linux-amd64-$STORY_VERSION.tar.gz -C /tmp
-mkdir -p ~/.story/story/cosmovisor/genesis/bin
-sudo cp /tmp/story-linux-amd64-$STORY_VERSION/story ~/.story/story/cosmovisor/genesis/bin/story
+    echo "Updating peers..."
+    sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.story/story/config/config.toml
 
-# Install Cosmovisor
-echo "Installing Cosmovisor..."
-go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
-
-# Setup Cosmovisor
-echo "Setting up Cosmovisor..."
-mkdir -p ~/.story/story/cosmovisor
-echo "export DAEMON_NAME=story" >> ~/.bash_profile
-echo "export DAEMON_HOME=$HOME/.story/story" >> ~/.bash_profile
-echo "export PATH=$HOME/go/bin:$DAEMON_HOME/cosmovisor/current/bin:$PATH" >> ~/.bash_profile
-source ~/.bash_profile
-
-# Initialize Story node
-echo "Initializing Story node..."
-~/.story/story/cosmovisor/genesis/bin/story init --network iliad --moniker "$moniker"
-
-# Update peers
-echo "Updating peers..."
-PEERS=$(curl -sS https://story-testnet-rpc.blockhub.id/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | paste -sd, -)
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.story/story/config/config.toml
-
-# Create Story-Geth service
-echo "Creating Story-Geth service..."
-sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
+    sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
 [Unit]
 Description=Story Geth Client
 After=network.target
 
 [Service]
 User=$USER
-ExecStart=$HOME/go/bin/story-geth --iliad --syncmode full
-Restart=on-failure
+ExecStart=/home/ubuntu/go/bin/story-geth --iliad --syncmode full --http --http.api eth,net,web3,engine --http.vhosts '*' --http.addr 0.0.0.0 --http.port 8545 --ws --ws.api eth,web3,net,txpool --ws.addr 0.0.0.0 --ws.port 8546Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
 
@@ -85,9 +44,8 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 
-# Create Story service
-echo "Creating Story service..."
-sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
+    # Step 10: Create and Configure systemd Service for Cosmovisor (Story)
+    sudo tee /etc/systemd/system/story.service > /dev/null <<EOF
 [Unit]
 Description=Cosmovisor service for Story binary
 After=network.target
@@ -110,13 +68,46 @@ Environment="UNSAFE_SKIP_BACKUP=true"
 WantedBy=multi-user.target
 EOF
 
-sudo systemctl daemon-reload
-sudo systemctl enable story-geth story
-sudo systemctl start story-geth
-sudo systemctl start story
+    # Step 11: Reload systemd, Enable, and Start Services
+    sudo systemctl daemon-reload
+    sudo systemctl enable story-geth story
+    sudo systemctl start story-geth story
 
-# Clean up
-rm -rf /tmp/geth-linux-amd64-$GETH_VERSION /tmp/story-linux-amd64-$STORY_VERSION
-rm /tmp/geth-linux-amd64-$GETH_VERSION.tar.gz /tmp/story-linux-amd64-$STORY_VERSION.tar.gz
+    echo -e "installed successfully"
 
-echo "Installation complete."
+}
+
+check_logs() {
+    echo -e "\nCheck Story logs"
+    sudo journalctl -u story -o cat -n 50
+    echo -e "\nCheck Story-Geth logs"
+    sudo journalctl -u story-geth -o cat -n 50
+}
+
+check_sync_status() {
+    echo -e "\nCheck node sync status..."
+    local_height=$(curl -s localhost:26657/status | jq -r '.result.sync_info.latest_block_height')
+    network_height=$(curl -s https://story-testnet-rpc.blockhub.id/status | jq -r '.result.sync_info.latest_block_height')
+    blocks_left=$((network_height - local_height))
+
+    echo -e "\033[1;32mYour node height:\033[0m \033[1;34m$local_height\033[0m" \
+            "| \033[1;33mNetwork height:\033[0m \033[1;36m$network_height\033[0m" \
+            "| \033[1;37mBlocks left:\033[0m \033[1;31m$blocks_left\033[0m"
+}
+
+run_story_node_setup() {
+    echo "Starting Story Node setup and checks..."
+    
+    install_story_node
+    echo "Waiting for services to start up..."
+    sleep 15 
+    
+    check_logs
+    echo "Logs checked. Waiting before sync status check..."
+    sleep 10  
+    
+    check_sync_status
+    echo "Setup and checks completed."
+}
+
+run_story_node_setup
