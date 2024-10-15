@@ -8,8 +8,8 @@ install_story_node() {
 
     wget -q https://github.com/piplabs/story-geth/releases/download/v0.9.4/geth-linux-amd64 -O /tmp/geth-linux-amd64
     mkdir -p ~/go/bin
-    sudo chmod +x geth-linux-amd64
-    sudo chmod 0755 geth-linux-amd64
+    sudo chmod +x /tmp/geth-linux-amd64
+    sudo chmod 0755 /tmp/geth-linux-amd64
     sudo cp /tmp/geth-linux-amd64 ~/go/bin/story-geth
 
 
