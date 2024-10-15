@@ -30,6 +30,7 @@ install_story_node() {
     ~/.story/story/cosmovisor/genesis/bin/story init --network iliad --moniker "$moniker"
 
     echo "Updating peers..."
+    PEERS=$(curl -sS https://story-testnet-rpc.blockhub.id/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | paste -sd, -)
     sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.story/story/config/config.toml
 
     sudo tee /etc/systemd/system/story-geth.service > /dev/null <<EOF
