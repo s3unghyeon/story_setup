@@ -20,9 +20,11 @@ display_menu() {
     echo "1. Install Story Node"
     echo "2. Upgrade Story Node"
     echo "3. Check Current Version"
-    echo "4. Exit"
+    echo "4. Check Node Status"
+    echo "5. Exit"
     echo -n "Please enter your choice: "
 }
+
 
 # Function to install Story Node
 setup_node() {
@@ -192,6 +194,27 @@ check_version() {
     fi
 }
 
+check_node_status() {
+    echo "Choose a service to check:"
+    echo "1. story-geth"
+    echo "2. story"
+    read -p "Enter your choice (1 or 2): " service_choice
+
+    case $service_choice in
+        1)
+            log "Checking story-geth status..."
+            sudo journalctl -u story-geth -n 10 --no-pager
+            ;;
+        2)
+            log "Checking story status..."
+            sudo journalctl -u story -n 10 --no-pager
+            ;;
+        *)
+            log "Invalid choice. Please try again."
+            ;;
+    esac
+}
+
 # Main script
 while true; do
     display_menu
@@ -207,6 +230,9 @@ while true; do
             check_version
             ;;
         4)
+            check_node_status
+            ;;
+        5)
             log "Exiting the script. Goodbye!"
             exit 0
             ;;
