@@ -1,6 +1,5 @@
-install_story_node() {
+setup_node() {
     read -p "Enter your node moniker: " moniker
-
 
     cd ~ && ver="1.22.0" && wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
     sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
@@ -76,4 +75,4 @@ EOF
     echo -e "installed successfully"
 
 }
-install_story_node
+setup_node
