@@ -1,9 +1,13 @@
 apiVersion: 1
+
 providers:
-  - name: 'Story Validator Dashboard'
-    folder: ''
+  - name: "Story"
+    folder: "" 
     type: file
     disableDeletion: false
+    editable: true
+    allowUiUpdates: true
     updateIntervalSeconds: 10
     options:
-      path: /var/lib/grafana/dashboards
+      path: /etc/grafana/provisioning/dashboards
+      foldersFromFilesStructure: true
