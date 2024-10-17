@@ -3,15 +3,19 @@ version: '3.8'
 
 volumes:
   grafana-data:
+  prometheus_data:
 
 services:
   prometheus:
     image: prom/prometheus:latest
+    env_file:
+      - .env
     container_name: prometheus
-    network_mode: host
     restart: unless-stopped
+    network_mode: host
     volumes:
       - ./prometheus-config.yaml:/etc/prometheus/prometheus-config.yaml
+      - prometheus_data:/prometheus
     expose:
       - 9090
   grafana:
