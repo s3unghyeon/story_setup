@@ -1,5 +1,9 @@
 version: '3.8'
 
+
+volumes:
+  grafana-data:
+
 services:
   prometheus:
     image: prom/prometheus:latest
@@ -7,7 +11,7 @@ services:
     network_mode: host
     restart: unless-stopped
     volumes:
-      - ./prometheus-config.yaml:/etc/prometheus/prometheus.yml
+      - ./prometheus-config.yaml:/etc/prometheus/prometheus-config.yaml
     expose:
       - 9090
   grafana:
@@ -16,9 +20,10 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER}
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
     restart: unless-stopped
     volumes:
-      - grafana-storage:/var/lib/grafana
+      - grafana-data:/var/lib/grafana
       - "./datasources:/etc/grafana/provisioning/datasources"
       - "./dashboards:/etc/grafana/provisioning/dashboards"
     network_mode: host 
