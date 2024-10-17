@@ -18,9 +18,10 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
     restart: unless-stopped
     volumes:
+    volumes:
       - grafana-storage:/var/lib/grafana
-      - ./grafana/provisioning:/etc/grafana/provisioning
-      - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - "./datasources:/etc/grafana/provisioning/datasources"
+      - "./dashboards:/etc/grafana/provisioning/dashboards"
     network_mode: host 
     expose:
       - 3000
