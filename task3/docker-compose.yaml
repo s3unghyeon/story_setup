@@ -8,8 +8,6 @@ volumes:
 services:
   prometheus:
     image: prom/prometheus:latest
-    env_file:
-      - .env
     container_name: prometheus
     restart: unless-stopped
     network_mode: host
