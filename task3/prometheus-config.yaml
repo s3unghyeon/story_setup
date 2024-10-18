@@ -10,10 +10,8 @@ scrape_configs:
           chain: story
           network: testnet
           nodeType: validator
-          ip: "${NODE_IP}"
     metrics_path: '/metrics'  
 
   - job_name: 'node_exporter'  
     static_configs:
       - targets: ['localhost:9100'] 
-          ip: "${NODE_IP}"
