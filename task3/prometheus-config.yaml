@@ -6,10 +6,13 @@ scrape_configs:
     static_configs:
       - targets: ['127.0.0.1:26660']  # Tendermint's Prometheus metrics endpoint
         labels:
-          region: "yourRegion"
-          chain: story
+          deployment: production
+          chain: STORY
           network: testnet
-          nodeType: validator
+          servicetype: validator
+          cloud: OVH
+          region: hesse
+          purpose: Cosmos
     metrics_path: '/metrics'  
 
   - job_name: 'node_exporter'  
