@@ -10,8 +10,8 @@ scrape_configs:
           chain: STORY
           network: testnet
           servicetype: validator
-          cloud: OVH
-          region: hesse
+          cloud: yourcloud
+          region: yourregion
           purpose: Cosmos
     metrics_path: '/metrics'  
 
