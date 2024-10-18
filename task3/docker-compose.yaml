@@ -8,16 +8,19 @@ services:
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
-    network_mode: host 
+    env_file: 
+      - .env
+    network_mode: host
     environment:
       - NODE_IP=${NODE_IP}
     volumes:
       - ./prometheus-config.yaml:/etc/prometheus/prometheus.yml
-    restart: unless-stopped
 
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
+    env_file:
+      - .env
     environment:
       - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER}
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
@@ -44,5 +47,3 @@ services:
     expose:
       - 9100
 
-env_file:
-  - .env

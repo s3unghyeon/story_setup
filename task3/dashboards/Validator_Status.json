@@ -1,4 +1,65 @@
 {
+    "__inputs": [
+        {
+            "name": "DS_INTERNAL_PROMETHEUS (PROD)",
+            "label": "Internal Prometheus (Prod)",
+            "description": "",
+            "type": "datasource",
+            "pluginId": "prometheus",
+            "pluginName": "Prometheus"
+        }
+    ],
+    "__elements": {},
+    "__requires": [
+        {
+            "type": "panel",
+            "id": "bargauge",
+            "name": "Bar gauge",
+            "version": ""
+        },
+        {
+            "type": "panel",
+            "id": "gauge",
+            "name": "Gauge",
+            "version": ""
+        },
+        {
+            "type": "grafana",
+            "id": "grafana",
+            "name": "Grafana",
+            "version": "11.4.0-77383"
+        },
+        {
+            "type": "datasource",
+            "id": "prometheus",
+            "name": "Prometheus",
+            "version": "1.0.0"
+        },
+        {
+            "type": "panel",
+            "id": "stat",
+            "name": "Stat",
+            "version": ""
+        },
+        {
+            "type": "panel",
+            "id": "table",
+            "name": "Table",
+            "version": ""
+        },
+        {
+            "type": "panel",
+            "id": "text",
+            "name": "Text",
+            "version": ""
+        },
+        {
+            "type": "panel",
+            "id": "timeseries",
+            "name": "Time series",
+            "version": ""
+        }
+    ],
     "annotations": {
         "list": [
             {
@@ -25,7 +86,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 1,
-    "id": 320,
+    "id": null,
     "links": [
         {
             "$$hashKey": "object:2302",
@@ -54,10 +115,6 @@
             "type": "row"
         },
         {
-            "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-            },
             "gridPos": {
                 "h": 8,
                 "w": 24,
@@ -75,14 +132,13 @@
                 "mode": "html"
             },
             "pluginVersion": "11.4.0-77383",
-            "title": "",
             "transparent": true,
             "type": "text"
         },
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "fieldConfig": {
                 "defaults": {
@@ -134,7 +190,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -154,7 +210,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "fieldConfig": {
                 "defaults": {
@@ -206,7 +262,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -226,7 +282,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "",
             "fieldConfig": {
@@ -297,7 +353,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -316,7 +372,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Number of validators who did not sign",
             "fieldConfig": {
@@ -384,7 +440,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -403,7 +459,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "fieldConfig": {
                 "defaults": {
@@ -452,7 +508,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -485,7 +541,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "fieldConfig": {
                 "defaults": {
@@ -709,7 +765,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -723,7 +779,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -738,7 +794,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": false,
                     "expr": "node_memory_MemTotal_bytes{job=~\"$job\",chain=~\"$chain\"} - 0",
@@ -752,7 +808,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": false,
                     "expr": "count(node_cpu_seconds_total{job=~\"$job\",chain=~\"$chain\"}) by (instance) /8",
@@ -766,7 +822,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -781,7 +837,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -796,7 +852,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -811,7 +867,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": false,
                     "expr": "max(rate(node_disk_read_bytes_total{job=~\"$job\",chain=~\"$chain\"}[$__interval])) by (instance)",
@@ -825,7 +881,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -840,7 +896,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -855,7 +911,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": false,
                     "expr": "max(rate(node_disk_written_bytes_total{job=~\"$job\",chain=~\"$chain\"}[$__interval])) by (instance)",
@@ -869,7 +925,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": false,
                     "expr": "max(rate(node_network_receive_bytes_total{job=~\"$job\",chain=~\"$chain\"}[$__interval])*8) by (instance)",
@@ -883,7 +939,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -1011,7 +1067,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "fieldConfig": {
                 "defaults": {
@@ -1065,7 +1121,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -1085,7 +1141,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "",
             "fieldConfig": {
@@ -1135,7 +1191,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -1156,7 +1212,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "fieldConfig": {
                 "defaults": {
@@ -1205,7 +1261,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -1226,7 +1282,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "fieldConfig": {
                 "defaults": {
@@ -1275,7 +1331,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -1296,7 +1352,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "",
             "fieldConfig": {
@@ -1342,8 +1398,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             },
                             {
                                 "color": "red",
@@ -1384,7 +1439,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -1401,7 +1456,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -1418,7 +1473,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -1435,7 +1490,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -1452,7 +1507,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -1473,7 +1528,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Number of uncommitted transactions",
             "fieldConfig": {
@@ -1486,8 +1541,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             }
                         ]
                     }
@@ -1523,7 +1577,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -1539,7 +1593,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -1560,7 +1614,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Total number of transactions committed",
             "fieldConfig": {
@@ -1573,8 +1627,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             }
                         ]
                     }
@@ -1610,7 +1663,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -1626,7 +1679,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -1647,7 +1700,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Total size of the mempool in bytes.",
             "fieldConfig": {
@@ -1694,8 +1747,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             }
                         ]
                     },
@@ -1730,7 +1782,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -1750,7 +1802,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Number of block produced last minute",
             "fieldConfig": {
@@ -1796,8 +1848,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             },
                             {
                                 "color": "red",
@@ -1860,7 +1911,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
@@ -1881,7 +1932,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Block size in bytes",
             "fieldConfig": {
@@ -1927,8 +1978,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "super-light-green",
-                                "value": null
+                                "color": "super-light-green"
                             },
                             {
                                 "color": "red",
@@ -1968,7 +2018,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -1987,7 +2037,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "",
             "fieldConfig": {
@@ -2007,8 +2057,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
-                                "value": null
+                                "color": "green"
                             },
                             {
                                 "color": "red",
@@ -2096,7 +2145,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -2152,10 +2201,6 @@
         },
         {
             "description": "",
-            "fieldConfig": {
-                "defaults": {},
-                "overrides": []
-            },
             "gridPos": {
                 "h": 2,
                 "w": 24,
@@ -2173,14 +2218,13 @@
                 "mode": "markdown"
             },
             "pluginVersion": "11.4.0-77383",
-            "title": "",
             "transparent": true,
             "type": "text"
         },
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Busy state of all CPU cores together",
             "fieldConfig": {
@@ -2246,7 +2290,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$instance:.*\",job=\"$job\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$instance:.*\",job=\"$job\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{job=\"$job\"}) by (cpu))",
@@ -2264,7 +2308,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Busy state of all CPU cores together (5 min average)",
             "fieldConfig": {
@@ -2330,7 +2374,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "avg(node_load5{instance=~\"$instance:.*\",job=\"$job\"}) /  count(count(node_cpu_seconds_total{instance=~\"$instance:.*\",job=\"$job\"}) by (cpu)) * 100",
@@ -2349,7 +2393,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Busy state of all CPU cores together (15 min average)",
             "fieldConfig": {
@@ -2415,7 +2459,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "avg(node_load15{instance=~\"$instance:.*\",job=\"$job\"}) / count(count(node_cpu_seconds_total{instance=~\"$instance:.*\",job=\"$job\"}) by (cpu)) * 100",
@@ -2433,7 +2477,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Used Swap",
             "fieldConfig": {
@@ -2499,7 +2543,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "((node_memory_SwapTotal_bytes{instance=~\"$instance:.*\",job=\"$job\"} - node_memory_SwapFree_bytes{instance=~\"$instance:.*\",job=\"$job\"}) / (node_memory_SwapTotal_bytes{instance=~\"$instance:.*\",job=\"$job\"} )) * 100",
@@ -2516,7 +2560,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Non available RAM memory",
             "fieldConfig": {
@@ -2575,7 +2619,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "((node_memory_MemTotal_bytes{instance=~\"$instance:.*\",job=\"$job\"} - node_memory_MemFree_bytes{instance=~\"$instance:.*\",job=\"$job\"}) / (node_memory_MemTotal_bytes{instance=~\"$instance:.*\",job=\"$job\"} )) * 100",
@@ -2590,7 +2634,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -2611,7 +2655,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Used Root FS",
             "fieldConfig": {
@@ -2677,7 +2721,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "100 - ((node_filesystem_avail_bytes{instance=~\"$instance:.*\",job=\"$job\",mountpoint=\"/\",fstype!=\"rootfs\"} * 100) / node_filesystem_size_bytes{instance=~\"$instance:.*\",job=\"$job\",mountpoint=\"/\",fstype!=\"rootfs\"})",
@@ -2695,7 +2739,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Used Root FS",
             "fieldConfig": {
@@ -2761,7 +2805,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "100 - ((node_filesystem_avail_bytes{instance=~\"$instance:.*\",job=\"$job\",mountpoint=\"/home\",fstype!=\"rootfs\"} * 100) / node_filesystem_size_bytes{instance=~\"$instance:.*\",job=\"$job\",mountpoint=\"/home\",fstype!=\"rootfs\"})",
@@ -2779,7 +2823,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Core node uptime",
             "fieldConfig": {
@@ -2852,7 +2896,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -2873,7 +2917,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Total SWAP",
             "fieldConfig": {
@@ -2939,7 +2983,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "node_memory_SwapTotal_bytes{instance=~\"$instance:.*\",job=\"$job\"}",
@@ -2956,7 +3000,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Total number of CPU cores",
             "fieldConfig": {
@@ -3021,7 +3065,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "count(count(node_cpu_seconds_total{instance=~\"$instance:.*\",job=\"$job\"}) by (cpu))",
@@ -3038,7 +3082,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Total RAM",
             "fieldConfig": {
@@ -3104,7 +3148,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "node_memory_MemTotal_bytes{instance=~\"$instance:.*\",job=\"$job\"}",
@@ -3121,7 +3165,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Total RootFS",
             "fieldConfig": {
@@ -3191,7 +3235,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "node_filesystem_size_bytes{instance=~\"$instance:.*\",job=\"$job\",mountpoint=\"/\",fstype!=\"rootfs\"}",
@@ -3210,7 +3254,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "",
             "fieldConfig": {
@@ -3279,7 +3323,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -3293,7 +3337,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": false,
@@ -3307,7 +3351,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -3321,7 +3365,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -3335,7 +3379,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -3353,7 +3397,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Basic CPU info",
             "fieldConfig": {
@@ -3515,7 +3559,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -3532,7 +3576,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -3549,7 +3593,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "expr": "sum by (instance)(irate(node_cpu_seconds_total{mode=\"iowait\",instance=~\"$instance:.*\",chain=~\"$chain\",job=\"$job\"}[5m])) * 100",
@@ -3564,7 +3608,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -3580,7 +3624,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -3597,7 +3641,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -3617,7 +3661,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Basic memory usage",
             "fieldConfig": {
@@ -3775,7 +3819,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -3792,7 +3836,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -3809,7 +3853,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -3825,7 +3869,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -3841,7 +3885,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -3861,7 +3905,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "",
             "fieldConfig": {
@@ -3975,7 +4019,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -3993,7 +4037,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -4009,7 +4053,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -4029,7 +4073,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Amount of data read and written to the device per second",
             "fieldConfig": {
@@ -4133,7 +4177,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -4149,7 +4193,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -4170,7 +4214,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "Time spent on each read/write operation",
             "fieldConfig": {
@@ -4275,7 +4319,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -4291,7 +4335,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -4311,7 +4355,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "The number of read/write requests sent to the raw drives",
             "fieldConfig": {
@@ -4415,7 +4459,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -4431,7 +4475,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -4452,7 +4496,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "If this is at 100%, it doesn’t necessarily mean that the device is saturated. SSD and NVMe devices require multiple outstanding I/O requests to deliver their full throughput.",
             "fieldConfig": {
@@ -4538,7 +4582,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -4558,7 +4602,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "",
             "fieldConfig": {
@@ -4622,7 +4666,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -4637,7 +4681,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -4655,7 +4699,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "",
             "fieldConfig": {
@@ -4791,7 +4835,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "expr": "node_hwmon_temp_celsius{job=\"${job}\",chain=\"${chain}\",instance=~\"$instance:.*\"}",
@@ -4806,7 +4850,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "expr": "node_hwmon_temp_crit_alarm_celsius{job=\"${job}\",chain=\"${chain}\",instance=~\"$instance:.*\"}",
@@ -4822,7 +4866,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "expr": "node_hwmon_temp_crit_celsius{job=\"${job}\",chain=\"${chain}\",instance=~\"$instance:.*\"}",
@@ -4837,7 +4881,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "expr": "node_hwmon_temp_crit_hyst_celsius{job=\"${job}\",chain=\"${chain}\",instance=~\"$instance:.*\"}",
@@ -4853,7 +4897,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "expr": "node_hwmon_temp_max_celsius{job=\"${job}\",chain=\"${chain}\",instance=~\"$instance:.*\"}",
@@ -4873,7 +4917,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "",
             "fieldConfig": {
@@ -5006,7 +5050,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -5021,7 +5065,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -5039,7 +5083,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "",
             "fieldConfig": {
@@ -5141,7 +5185,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -5157,7 +5201,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -5177,7 +5221,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "description": "",
             "fieldConfig": {
@@ -5228,7 +5272,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -5241,7 +5285,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "editorMode": "code",
                     "exemplar": true,
@@ -5259,7 +5303,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "fieldConfig": {
                 "defaults": {
@@ -5309,7 +5353,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "sum(increase(node_network_receive_bytes_total{instance=~\"$instance:.*\"}[7d]))",
@@ -5320,7 +5364,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "sum(increase(node_network_transmit_bytes_total{instance=~\"$instance:.*\"}[7d]))",
@@ -5336,7 +5380,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "1YugLcnVk"
+                "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
             },
             "fieldConfig": {
                 "defaults": {
@@ -5386,7 +5430,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "sum(increase(node_network_receive_bytes_total{instance=~\"$instance:.*\"}[31d]))",
@@ -5397,7 +5441,7 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "1YugLcnVk"
+                        "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                     },
                     "exemplar": true,
                     "expr": "sum(increase(node_network_transmit_bytes_total{instance=~\"$instance:.*\"}[31d]))",
@@ -5411,7 +5455,6 @@
             "type": "stat"
         }
     ],
-    "preload": false,
     "refresh": "",
     "schemaVersion": 40,
     "tags": [
@@ -5422,13 +5465,10 @@
     "templating": {
         "list": [
             {
-                "current": {
-                    "text": "STORY",
-                    "value": "STORY"
-                },
+                "current": {},
                 "datasource": {
                     "type": "prometheus",
-                    "uid": "1YugLcnVk"
+                    "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                 },
                 "definition": "label_values(node_uname_info{chain=~\"BERA|DYDX|TIA|BALON|STORY\"},chain)",
                 "includeAll": false,
@@ -5444,13 +5484,10 @@
                 "type": "query"
             },
             {
-                "current": {
-                    "text": "testnet",
-                    "value": "testnet"
-                },
+                "current": {},
                 "datasource": {
                     "type": "prometheus",
-                    "uid": "1YugLcnVk"
+                    "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                 },
                 "definition": "label_values(node_uname_info{chain=~\"$chain\"},network)",
                 "includeAll": false,
@@ -5466,13 +5503,10 @@
                 "type": "query"
             },
             {
-                "current": {
-                    "text": "validator",
-                    "value": "validator"
-                },
+                "current": {},
                 "datasource": {
                     "type": "prometheus",
-                    "uid": "1YugLcnVk"
+                    "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                 },
                 "definition": "label_values(node_uname_info{chain=~\"$chain\", network=~\"$network\"},servicetype)",
                 "includeAll": false,
@@ -5488,13 +5522,10 @@
                 "type": "query"
             },
             {
-                "current": {
-                    "text": "prod-STORY-testnet-validator",
-                    "value": "prod-STORY-testnet-validator"
-                },
+                "current": {},
                 "datasource": {
                     "type": "prometheus",
-                    "uid": "1YugLcnVk"
+                    "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                 },
                 "definition": "label_values(node_uname_info{chain=~\"$chain\", network=~\"$network\", servicetype=~\"$servicetype\"},job)",
                 "includeAll": false,
@@ -5510,13 +5541,10 @@
                 "type": "query"
             },
             {
-                "current": {
-                    "text": "57.129.52.151",
-                    "value": "57.129.52.151"
-                },
+                "current": {},
                 "datasource": {
                     "type": "prometheus",
-                    "uid": "1YugLcnVk"
+                    "uid": "${DS_INTERNAL_PROMETHEUS (PROD)}"
                 },
                 "definition": "label_values(up{job=~\"$job\", servicetype=~\"$servicetype\"},instance)",
                 "includeAll": false,
