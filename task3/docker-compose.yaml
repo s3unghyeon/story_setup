@@ -3,19 +3,18 @@ version: '3.8'
 
 volumes:
   grafana-data:
-  prometheus_data:
 
 services:
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
-    restart: unless-stopped
-    network_mode: host
+    network_mode: host 
+    environment:
+      - NODE_IP=${NODE_IP}
     volumes:
-      - ./prometheus-config.yaml:/etc/prometheus/prometheus-config.yaml
-      - prometheus_data:/prometheus
-    expose:
-      - 9090
+      - ./prometheus-config.yaml:/etc/prometheus/prometheus.yml
+    restart: unless-stopped
+
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
@@ -45,3 +44,5 @@ services:
     expose:
       - 9100
 
+env_file:
+  - .env
